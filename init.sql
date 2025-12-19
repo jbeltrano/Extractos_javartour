@@ -1,11 +1,11 @@
 CREATE TABLE "conductor" (
-  "id" varchar,
+  "id" varchar(12) primary key,
   "nombre" text,
   "vigencia" date
 );
 
 CREATE TABLE "persona" (
-  "id" varchar,
+  "id" varchar(12) primary key,
   "tipo_id" varchar,
   "nombre" text,
   "telefono" text,
@@ -13,7 +13,7 @@ CREATE TABLE "persona" (
 );
 
 CREATE TABLE "vehiculo" (
-  "id" varchar,
+  "id" varchar(12) primary key,
   "modelo" text,
   "marca" text,
   "clase" text,
@@ -22,21 +22,21 @@ CREATE TABLE "vehiculo" (
 );
 
 CREATE TABLE "extracto" (
-  "id" varchar,
-  "vehiculo_id" varchar NOT NULL,
-  "fecha_registro" datetime DEFAULT 'now',
-  "empresa_id" varchar NOT NULL,
+  "id" varchar(12) primary key,
+  "vehiculo_id" varchar(12) NOT NULL,
+  "fecha_registro" timestamp DEFAULT now(),
+  "empresa_id" varchar(12) NOT NULL,
   "contrato" integer NOT NULL,
-  "contratante_id" varchar NOT NULL,
+  "contratante_id" varchar(12) NOT NULL,
   "objeto_contrato" text NOT NULL,
   "recorrido" text NOT NULL,
-  "convenio_id" varchar NOT NULL,
-  "conductor_1_id" varchar NOT NULL,
-  "conductor_2_id" varchar,
-  "conductor_3_id" varchar,
+  "convenio_id" varchar(12) NOT NULL,
+  "conductor_1_id" varchar(12) NOT NULL,
+  "conductor_2_id" varchar(12),
+  "conductor_3_id" varchar(12),
   "fecha_inicio" date NOT NULL,
   "fecha_fin" date NOT NULL,
-  "responsable_id" varchar NOT NULL
+  "responsable_id" varchar(12) NOT NULL
 );
 
 ALTER TABLE "extracto" ADD FOREIGN KEY ("vehiculo_id") REFERENCES "vehiculo" ("id");
